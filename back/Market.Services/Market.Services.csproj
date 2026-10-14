@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Market.Contracts\Market.Contracts.csproj" />
+    <ProjectReference Include="..\Market.DataBase\Market.DataBase.csproj" />
+  </ItemGroup>
+
+</Project>
