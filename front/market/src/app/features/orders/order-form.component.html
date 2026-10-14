@@ -1,0 +1,33 @@
+<div class="card">
+  <h2>{{ editId() ? 'Редактировать заказ' : 'Новый заказ' }}</h2>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <label class="field">Адрес доставки
+      <input formControlName="address" placeholder="ул. Тестовая, 1" />
+    </label>
+
+    <h3>Позиции заказа</h3>
+    <div formArrayName="items">
+      @for (ctrl of items.controls; track $index) {
+        <div [formGroupName]="$index" style="display:flex; gap:8px; margin-bottom:8px; align-items:end;">
+          <label class="field" style="flex:1">Товар
+            <select formControlName="productId">
+              <option value="" disabled>— выбрать —</option>
+              @for (p of products(); track p.id) {
+                <option [value]="p.id">{{ p.name }} ({{ p.price }} ₽)</option>
+              }
+            </select>
+          </label>
+          <label class="field" style="width:90px">Кол‑во
+            <input type="number" min="1" formControlName="quantity" />
+          </label>
+          <button type="button" class="btn btn-danger" (click)="removeItem($index)">✕</button>
+        </div>
+      }
+    </div>
+
+    <button type="button" class="btn btn-ghost" (click)="addItem()">+ добавить позицию</button>
+    <hr style="margin:16px 0" />
+    <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Сохранить заказ</button>
+    <a class="btn btn-ghost" routerLink="/orders">Отмена</a>
+  </form>
+</div>

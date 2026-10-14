@@ -1,0 +1,32 @@
+<div class="toolbar">
+  <h2>Заказы</h2>
+  <a class="btn btn-primary" routerLink="/orders/new">+ Создать заказ</a>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>№ заказа</th>
+      <th>Адрес</th>
+      <th>Позиции</th>
+      <th style="width:180px">Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (o of orders(); track o.id) {
+      <tr>
+        <td>{{ o.numberId.slice(0,8) }}…</td>
+        <td>{{ o.address }}</td>
+        <td>
+          @for (it of o.orderItems; track it.productId) {
+            <div>{{ it.product?.name ?? it.productId }} × {{ it.quantity }}</div>
+          } @empty { <span style="color:#9ca3af">—</span> }
+        </td>
+        <td>
+          <a class="btn btn-ghost" [routerLink]="['/orders', o.id, 'edit']">Изменить</a>
+          <button class="btn btn-danger" (click)="remove(o.id)">Удалить</button>
+        </td>
+      </tr>
+    } @empty { <tr><td colspan="4">Заказов нет</td></tr> }
+  </tbody>
+</table>

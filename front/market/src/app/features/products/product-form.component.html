@@ -1,0 +1,13 @@
+<div class="card" style="max-width:420px">
+  <h2>{{ editId() ? 'Редактировать товар' : 'Новый товар' }}</h2>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <label class="field">Название
+      <input formControlName="name" placeholder="toy 1" />
+    </label>
+    <label class="field">Цена
+      <input type="number" formControlName="price" step="0.01" />
+    </label>
+    <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Сохранить</button>
+    <a class="btn btn-ghost" routerLink="/products">Отмена</a>
+  </form>
+</div>

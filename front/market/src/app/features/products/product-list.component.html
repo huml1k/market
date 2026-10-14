@@ -1,0 +1,28 @@
+<div class="toolbar">
+  <h2>Товары</h2>
+  <a class="btn btn-primary" routerLink="/products/new">+ Добавить товар</a>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Название</th>
+      <th>Цена</th>
+      <th style="width:180px">Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (p of products(); track p.id) {
+      <tr>
+        <td>{{ p.name }}</td>
+        <td>{{ p.price }} ₽</td>
+        <td>
+          <a class="btn btn-ghost" [routerLink]="['/products', p.id, 'edit']">Изменить</a>
+          <button class="btn btn-danger" (click)="remove(p.id)">Удалить</button>
+        </td>
+      </tr>
+    } @empty {
+      <tr><td colspan="3">Список пуст</td></tr>
+    }
+  </tbody>
+</table>

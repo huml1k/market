@@ -1,0 +1,35 @@
+.hdr
+{ 
+    display:flex;
+    align-items:center; 
+    gap:24px; 
+    padding:12px 24px;
+    background:#1f2937; 
+    color:#fff; 
+}
+
+.logo 
+{ 
+    font-weight:700; 
+    font-size:18px; 
+}
+
+nav a 
+{ 
+    color:#cbd5e1; 
+    text-decoration:none; 
+    padding:6px 12px; 
+    border-radius:6px; 
+}
+
+nav a:hover 
+{ 
+    background:#374151; 
+    color:#fff; 
+}
+
+nav a.active 
+{ 
+    background:#2563eb; 
+    color:#fff; 
+}
